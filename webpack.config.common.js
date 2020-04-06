@@ -1,0 +1,34 @@
+const path = require('path');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+
+// Plugins
+const htmlPlugin = new HtmlWebPackPlugin({
+  template: path.resolve(__dirname, 'src', 'index.html'),
+  inject: true,
+  filename: "./index.html"
+});
+const cleanWebpackPlugin = new CleanWebpackPlugin();
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      }
+    ]
+  },
+  plugins: [
+    htmlPlugin,
+    cleanWebpackPlugin,
+  ]
+}
