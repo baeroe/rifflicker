@@ -24,11 +24,27 @@ module.exports = {
         use: {
           loader: "babel-loader"
         }
-      }
-    ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+    ],
   },
   plugins: [
     htmlPlugin,
     cleanWebpackPlugin,
-  ]
+  ],
+  resolve: {
+    alias: {
+      Components: path.resolve(__dirname, 'src/components'),
+      Assets: path.resolve(__dirname, 'src/assets'),
+    }
+  }
 }
