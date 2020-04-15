@@ -106,8 +106,8 @@ export default function PracticeKeyScale(props) {
           >
             <MenuItem value={'major'}>Major</MenuItem>
             <MenuItem value={'minor'}>Minor</MenuItem>
-            <MenuItem value={'majorPentatonic'}>Major Pentatonic</MenuItem>
-            <MenuItem value={'minorPentatonic'}>Minor Pentatonic</MenuItem>
+            <MenuItem value={'major Pentatonic'}>Major Pentatonic</MenuItem>
+            <MenuItem value={'minor Pentatonic'}>Minor Pentatonic</MenuItem>
           </Select>
         </FormControl>
         </div>

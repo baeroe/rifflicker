@@ -10,13 +10,14 @@ import Practice from 'Components/Practice';
 
 const useStyles = makeStyles({
   appbar: {
-    background: '#fafafa',
+    background: 'white',
+    boxShadow: 'none',
   },
   button: {
     color: 'black',
-    background: '#fafafa',
     borderRadius: '0',
     width: '100%',
+    boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2)',
     '&:hover': {
       background: '#ff5100',
       color:"#fafafa",
