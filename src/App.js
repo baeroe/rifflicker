@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, Button} from '@material-ui/core';
-import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Link, Switch, useLocation} from 'react-router-dom';
 
 import LogoS from 'Assets/logo_S.png';
 import Home from 'Components/Home';
@@ -41,10 +41,10 @@ export default function App() {
         <Toolbar variant="dense">
           <img src={LogoS}alt="Logo" />
           <Link className={classes.link} to="/">
-            <Button className={classes.button}>HOME</Button>
+            <Button id="homeBtn" className={classes.button}>HOME</Button>
           </Link>
           <Link className={classes.link} to="/practice">
-            <Button className={classes.button}>PRACTICE</Button>
+            <Button id="practiceBtn" className={classes.button}>PRACTICE</Button>
           </Link>
         </Toolbar>
       </AppBar>
