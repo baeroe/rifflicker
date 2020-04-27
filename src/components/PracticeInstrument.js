@@ -4,6 +4,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
+import Bass from 'Assets/bass.png';
+import Guitar from 'Assets/guitar.png';
+
 const useStyles = makeStyles({
   root: {
     width: '100%',
@@ -81,9 +84,12 @@ export default function PracticeInstrument(props) {
           <Typography variant="h3">Select your instrument</Typography>
         </div>
         <div className={classes.selection}>
-          <Button id="bassBtn" value="Bass" onClick={props.onInstrument} className={classes.instrumentBtn}>Bass</Button>
-          <Button id="guitarBtn" value="Guitar" onClick={props.onInstrument} className={classes.instrumentBtn}>Guitar</Button>
-
+          <Button id="bassBtn" value="Bass" onClick={props.onInstrument} value="Bass" className={classes.instrumentBtn}>
+            <img src={Bass} alt="Bass" value="Bass" />
+          </Button>
+          <Button id="guitarBtn" value="Guitar" onClick={props.onInstrument} value="Guitar" className={classes.instrumentBtn}>
+            <img src={Guitar} alt="Guitar" value="Guitar" />
+          </Button>
         </div>
         <div className={classes.buttons}>
           <Button className={classes.button} disabled>Back</Button>

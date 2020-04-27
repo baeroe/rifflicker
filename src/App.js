@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, Button} from '@material-ui/core';
 import {BrowserRouter, Route, Link, Switch, useLocation} from 'react-router-dom';
 
-import LogoS from 'Assets/logo_S.png';
+import LogoSmall from 'Assets/logo_small.png';
 import Home from 'Components/Home';
 import Practice from 'Components/Practice';
 
@@ -12,6 +12,7 @@ const useStyles = makeStyles({
   appbar: {
     background: 'white',
     boxShadow: 'none',
+    marginTop: '20px',
   },
   button: {
     color: 'black',
@@ -39,7 +40,7 @@ export default function App() {
 
       <AppBar className={classes.appbar} position="static">
         <Toolbar variant="dense">
-          <img src={LogoS}alt="Logo" />
+          <img src={LogoSmall}alt="Logo" />
           <Link className={classes.link} to="/">
             <Button id="homeBtn" className={classes.button}>HOME</Button>
           </Link>

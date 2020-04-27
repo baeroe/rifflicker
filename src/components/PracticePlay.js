@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import Noteboard from 'Components/Noteboard';
 import Fretboard from 'Components/Fretboard';
 
-
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -64,6 +63,8 @@ const useStyles = makeStyles({
 
 export default function PracticePlay(props) {
   const classes = useStyles();
+  const notes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
+  const notesOnScale = getNotesOnScale(props.selectedKey, props.selectedScale, notes);
 
   useEffect(() => {
     var noteDots = document.getElementsByName("dots");
@@ -73,11 +74,8 @@ export default function PracticePlay(props) {
         item.style.color ="white";
       }
     });
-
   },[])
 
-  const notes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
-  const notesOnScale = getNotesOnScale(props.selectedKey, props.selectedScale, notes);
 
   return (
     <div className={classes.root}>
@@ -96,9 +94,9 @@ export default function PracticePlay(props) {
         <Noteboard notesOnScale={notesOnScale} selectedInstrument={props.selectedInstrument} selectedKey={props.selectedKey} />
       </div>
       {
-      // <div className={classes.footer}>
-      //   <p>here is the footer</p>
-      // </div>
+      <div className={classes.footer}>
+        <p id="freq"></p>
+      </div>
       }
     </div>
   );
@@ -107,12 +105,26 @@ export default function PracticePlay(props) {
 function getNotesOnScale(key, scale, notes) {
   var stepsOnScale;
   switch (scale) {
-    case "major":
+    case "Ionian":
       stepsOnScale = [0, 2, 4, 5, 7, 9, 11];
       break;
-    case "minor":
+    case "Dorian":
+      stepsOnScale = [0, 2, 3, 5, 7, 9, 10];
+      break;
+    case "Phrygian":
+      stepsOnScale = [0, 1, 3, 5, 7, 8, 10];
+      break;
+    case "Lydian":
+      stepsOnScale = [0, 2, 4, 6, 7, 9, 11];
+      break;
+    case "Mixolydian":
+      stepsOnScale = [0, 2, 4, 5, 7, 9, 10];
+      break;
+    case "Aeolian":
       stepsOnScale = [0, 2, 3, 5, 7, 8, 10];
       break;
+    case "Locrian":
+      stepsOnScale = [0, 1, 3, 5, 6, 8, 10];
     case "major Pentatonic":
       stepsOnScale = [0, 2, 4, 7, 9];
       break;

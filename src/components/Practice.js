@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
@@ -49,13 +49,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Practice() {
   const classes = useStyles();
 
-  useEffect(() => {
-    if (location.pathname === "/practice") {
-      document.getElementById("practiceBtn").style.boxShadow="0px 2px 4px -1px rgba(0,0,0,0.2) inset,0px 4px 5px 0px rgba(0,0,0,0.14) inset,0px 1px 10px 0px rgba(0,0,0,0.12) inset";
-      document.getElementById("homeBtn").style.boxShadow="0px 2px 4px -1px rgba(0,0,0,0.2)";
-    };
-  },[])
-
   const [activeStep, setActiveStep] = React.useState(0);
   const [instrument, setInstrument] = React.useState('');
   const [scale, setScale] = React.useState('');
@@ -76,7 +69,7 @@ export default function Practice() {
   };
 
   const handleInstrument = (event) => {
-    setInstrument(event.target.value);
+    setInstrument(event.currentTarget.value);
   };
 
   const handleScale = (event) => {
