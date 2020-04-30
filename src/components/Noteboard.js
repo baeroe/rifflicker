@@ -39,13 +39,13 @@ const useStyles = makeStyles({
   },
   notesBassDot: {
     display: 'flex',
-    height: '40px',
-    width: '40px',
+    height: '42px',
+    width: '42px',
     backgroundColor: '#aaaaaa',
     borderRadius: '50%',
     justifyContent: 'center',
     alignItems: 'center',
-    fontSize: '25px',
+    fontSize: '20px',
     boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2)',
   },
   notesGuitarDot: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles({
     borderRadius: '50%',
     justifyContent: 'center',
     alignItems: 'center',
-    fontSize: '25px',
+    fontSize: '18px',
     boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2)',
   },
   fretboard: {
@@ -71,31 +71,41 @@ const useStyles = makeStyles({
 export default function Noteboard(props) {
   const classes = useStyles();
 
-  const notes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
+  const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
   var tuning;
   var tabs;
   var strings;
 
+  var notesOnStep = [];
+  var octave = 0;
+  for (var d=0; d<=60; d++) {
+    if ((d)%12 === 0) {
+      octave++
+    }
+    notesOnStep[d]= notes[(d)%12] + octave;
+  }
+
   if (props.selectedInstrument === "Bass") {
-    tuning = [10, 5, 0, 7];
+
+    tuning = [19, 14, 9, 4];
     tabs
     strings = [];
 
     for (var i=0; i<tuning.length; i++) {
       tabs = [];
-      tabs.push(<div className={classes.notesBassTab} style={{width: '0.5%', borderLeft: '2px solid transparent'}}></div>);
+      tabs.push(<div key={"note "+ i + " first"} className={classes.notesBassTab} style={{width: '0.5%', borderLeft: '2px solid transparent'}}></div>);
       for (var d=0; d<14; d++) {
         tabs.push(
-          <div className={classes.notesBassTab}>
+          <div key={"note" + i + " " + d} className={classes.notesBassTab}>
             {
               props.notesOnScale.includes( notes[ (tuning[i]+d)%12 ] )
-              ? <div name="dots" className={classes.notesBassDot}>{notes[ (tuning[i]+d)%12 ]}</div>
+              ? <div name="dots" className={classes.notesBassDot}>{notesOnStep[d+tuning[i]]}</div>
               : null
             }
           </div>
         );
       }
-      strings.push(<div className={classes.notesString}>{tabs}</div>);
+      strings.push(<div key={"note string" + i} className={classes.notesString}>{tabs}</div>);
     }
 
     return(
@@ -106,25 +116,25 @@ export default function Noteboard(props) {
 
   } else if (props.selectedInstrument === "Guitar") {
 
-    tuning = [7, 2, 10, 5, 0, 7];
+    tuning = [40, 35, 31, 26, 21, 16];
     tabs
     strings = [];
 
     for (var i=0; i<tuning.length; i++) {
       tabs = [];
-      tabs.push(<div className={classes.notesGuitarTab} style={{width: '0.5%', borderLeft: '2px solid transparent'}}></div>);
+      tabs.push(<div key={"note "+ i + " first"} className={classes.notesGuitarTab} style={{width: '0.5%', borderLeft: '2px solid transparent'}}></div>);
       for (var d=0; d<14; d++) {
         tabs.push(
-          <div className={classes.notesGuitarTab}>
+          <div key={"note" + i + " " + d} className={classes.notesGuitarTab}>
             {
               props.notesOnScale.includes( notes[ (tuning[i]+d)%12 ] )
-              ? <div name="dots" className={classes.notesGuitarDot}>{notes[ (tuning[i]+d)%12 ]}</div>
+              ? <div name="dots" className={classes.notesGuitarDot}>{notesOnStep[d+tuning[i]]}</div>
               : null
             }
           </div>
         );
       }
-      strings.push(<div className={classes.notesString}>{tabs}</div>);
+      strings.push(<div key={"note string" + i} className={classes.notesString}>{tabs}</div>);
     }
 
     return(

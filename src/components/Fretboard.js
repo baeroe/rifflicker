@@ -57,10 +57,10 @@ export default function Fretboard(props) {
     strings = [];
     for (var i=1; i<tuning.length; i++) {
       tabs = [];
-      tabs.push(<div className={classes.bassTab} style={{width: '0.5%', borderLeft: '2px solid black'}}></div>);
+      tabs.push(<div key={i + " first"} className={classes.bassTab} style={{width: '0.5%', borderLeft: '2px solid black'}}></div>);
       for (var d=0; d<13; d++) {
         tabs.push(
-          <div className={classes.bassTab}>
+          <div key={i + " " + d} className={classes.bassTab}>
           {
             (i === 1 || i ===3) && d === 11
             ? <div className={classes.navDot} />
@@ -73,9 +73,9 @@ export default function Fretboard(props) {
           }
           </div>);
       }
-      strings.push(<div className={classes.string}>{tabs}</div>);
+      strings.push( <div key={"string" + i} className={classes.string}>{tabs}</div>);
     }
-    strings.push(<div className={classes.string}></div>);
+    strings.push(<div key= {"string last"} className={classes.string}></div>);
 
   } else if (props.selectedInstrument === "Guitar") {
     tuning = [7, 2, 10, 5, 0, 7];
@@ -83,10 +83,10 @@ export default function Fretboard(props) {
     strings = [];
     for (var i=1; i<tuning.length; i++) {
       tabs = [];
-      tabs.push(<div className={classes.guitarTab} style={{width: '0.5%', borderLeft: '1px solid black'}}></div>);
+      tabs.push(<div key={i + " first"} className={classes.guitarTab} style={{width: '0.5%', borderLeft: '1px solid black'}}></div>);
       for (var d=0; d<13; d++) {
         tabs.push(
-          <div className={classes.guitarTab}>
+          <div key={i + " " + d} className={classes.guitarTab}>
           {
             (i === 2 || i ===4) && d === 11
             ? <div className={classes.navDot} />
@@ -99,9 +99,9 @@ export default function Fretboard(props) {
           }
           </div>);
       }
-      strings.push(<div className={classes.string}>{tabs}</div>);
+      strings.push(<div key={"string" + i} className={classes.string}>{tabs}</div>);
     }
-    strings.push(<div className={classes.string}></div>);
+    strings.push(<div key= {"string last"} className={classes.string}></div>);
   }
 
   return(<div className={classes.fretboard}>{strings}</div>);

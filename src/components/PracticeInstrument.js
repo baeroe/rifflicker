@@ -34,9 +34,7 @@ const useStyles = makeStyles({
     height: '200px',
     margin: '20px',
     boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2)',
-    '&:focus': {
-      boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2) inset,0px 4px 5px 0px rgba(0,0,0,0.14) inset,0px 1px 10px 0px rgba(0,0,0,0.12) inset',
-    },
+
   },
   header: {
     display: 'flex',
@@ -56,6 +54,9 @@ const useStyles = makeStyles({
       background: '#dddddd',
     },
   },
+  selectedBtn: {
+    boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2) inset,0px 4px 5px 0px rgba(0,0,0,0.14) inset,0px 1px 10px 0px rgba(0,0,0,0.12) inset',
+  },
 });
 
 export default function PracticeInstrument(props) {
@@ -63,9 +64,11 @@ export default function PracticeInstrument(props) {
 
   useEffect(() => {
     if (props.selectedInstrument === "Bass") {
-      document.getElementById("bassBtn").focus();
+      document.getElementById("bassBtn").style.boxShadow = '0px 2px 4px -1px rgba(0,0,0,0.2) inset,0px 4px 5px 0px rgba(0,0,0,0.14) inset,0px 1px 10px 0px rgba(0,0,0,0.12) inset';
+      document.getElementById("guitarBtn").style.boxShadow = '0px 2px 4px -1px rgba(0,0,0,0.2)';
     } else if (props.selectedInstrument === "Guitar") {
-      document.getElementById("guitarBtn").focus();
+      document.getElementById("guitarBtn").style.boxShadow = '0px 2px 4px -1px rgba(0,0,0,0.2) inset,0px 4px 5px 0px rgba(0,0,0,0.14) inset,0px 1px 10px 0px rgba(0,0,0,0.12) inset';
+      document.getElementById("bassBtn").style.boxShadow = '0px 2px 4px -1px rgba(0,0,0,0.2)';
     }
   },[])
 
@@ -77,6 +80,17 @@ export default function PracticeInstrument(props) {
     }
   }
 
+  const handleClick = (event) => {
+    props.onInstrument(event);
+    if (event.currentTarget.value === "Bass") {
+      document.getElementById("bassBtn").style.boxShadow = '0px 2px 4px -1px rgba(0,0,0,0.2) inset,0px 4px 5px 0px rgba(0,0,0,0.14) inset,0px 1px 10px 0px rgba(0,0,0,0.12) inset';
+      document.getElementById("guitarBtn").style.boxShadow = '0px 2px 4px -1px rgba(0,0,0,0.2)';
+    } else {
+      document.getElementById("guitarBtn").style.boxShadow = '0px 2px 4px -1px rgba(0,0,0,0.2) inset,0px 4px 5px 0px rgba(0,0,0,0.14) inset,0px 1px 10px 0px rgba(0,0,0,0.12) inset';
+      document.getElementById("bassBtn").style.boxShadow = '0px 2px 4px -1px rgba(0,0,0,0.2)';
+    }
+  }
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper} elevation={3}>
@@ -84,10 +98,10 @@ export default function PracticeInstrument(props) {
           <Typography variant="h3">Select your instrument</Typography>
         </div>
         <div className={classes.selection}>
-          <Button id="bassBtn" value="Bass" onClick={props.onInstrument} value="Bass" className={classes.instrumentBtn}>
+          <Button id="bassBtn" onClick={handleClick} value="Bass" className={classes.instrumentBtn}>
             <img src={Bass} alt="Bass" value="Bass" />
           </Button>
-          <Button id="guitarBtn" value="Guitar" onClick={props.onInstrument} value="Guitar" className={classes.instrumentBtn}>
+          <Button id="guitarBtn" onClick={handleClick} value="Guitar" className={classes.instrumentBtn}>
             <img src={Guitar} alt="Guitar" value="Guitar" />
           </Button>
         </div>

@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 
 import Noteboard from 'Components/Noteboard';
 import Fretboard from 'Components/Fretboard';
+import Toolbar from 'Components/Toolbar';
 
 const useStyles = makeStyles({
   root: {
@@ -65,17 +66,19 @@ export default function PracticePlay(props) {
   const classes = useStyles();
   const notes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
   const notesOnScale = getNotesOnScale(props.selectedKey, props.selectedScale, notes);
+  var recOn = false;
+  var regex = new RegExp(props.selectedKey + "[0-9]");
 
   useEffect(() => {
     var noteDots = document.getElementsByName("dots");
     noteDots.forEach((item, i) => {
-      if (item.innerHTML === props.selectedKey) {
+      if (regex.test(item.innerHTML)) {
         item.style.backgroundColor="#ff5100";
         item.style.color ="white";
       }
     });
-  },[])
 
+  },[])
 
   return (
     <div className={classes.root}>
@@ -95,7 +98,7 @@ export default function PracticePlay(props) {
       </div>
       {
       <div className={classes.footer}>
-        <p id="freq"></p>
+        <Toolbar />
       </div>
       }
     </div>
