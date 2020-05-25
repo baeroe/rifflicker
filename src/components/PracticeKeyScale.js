@@ -126,6 +126,7 @@ export default function PracticeKeyScale(props) {
               value={props.selectedScale}
               onChange={props.onScale}
             >
+            {/*
               <MenuItem value={'Ionian'}>Ionian (Major)</MenuItem>
               <MenuItem value={'Dorian'}>Dorian</MenuItem>
               <MenuItem value={'Phrygian'}>Phrygian</MenuItem>
@@ -133,6 +134,11 @@ export default function PracticeKeyScale(props) {
               <MenuItem value={'Mixolydian'}>Mixolydian</MenuItem>
               <MenuItem value={'Aeolian'}>Aeolian (Minor)</MenuItem>
               <MenuItem value={'Locrian'}>Locrian</MenuItem>
+              <MenuItem value={'major Pentatonic'}>Major Pentatonic</MenuItem>
+              <MenuItem value={'minor Pentatonic'}>Minor Pentatonic</MenuItem>
+            */}
+              <MenuItem value={'Major'}>Major</MenuItem>
+              <MenuItem value={'Minor'}>Minor</MenuItem>
               <MenuItem value={'major Pentatonic'}>Major Pentatonic</MenuItem>
               <MenuItem value={'minor Pentatonic'}>Minor Pentatonic</MenuItem>
             </Select>

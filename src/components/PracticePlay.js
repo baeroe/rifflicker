@@ -108,31 +108,39 @@ export default function PracticePlay(props) {
 function getNotesOnScale(key, scale, notes) {
   var stepsOnScale;
   switch (scale) {
-    case "Ionian":
+    // case "Ionian":
+    //   stepsOnScale = [0, 2, 4, 5, 7, 9, 11];
+    //   break;
+    // case "Dorian":
+    //   stepsOnScale = [0, 2, 3, 5, 7, 9, 10];
+    //   break;
+    // case "Phrygian":
+    //   stepsOnScale = [0, 1, 3, 5, 7, 8, 10];
+    //   break;
+    // case "Lydian":
+    //   stepsOnScale = [0, 2, 4, 6, 7, 9, 11];
+    //   break;
+    // case "Mixolydian":
+    //   stepsOnScale = [0, 2, 4, 5, 7, 9, 10];
+    //   break;
+    // case "Aeolian":
+    //   stepsOnScale = [0, 2, 3, 5, 7, 8, 10];
+    //   break;
+    // case "Locrian":
+    //   stepsOnScale = [0, 1, 3, 5, 6, 8, 10];
+    //   break;
+    case "Major":
       stepsOnScale = [0, 2, 4, 5, 7, 9, 11];
       break;
-    case "Dorian":
-      stepsOnScale = [0, 2, 3, 5, 7, 9, 10];
-      break;
-    case "Phrygian":
-      stepsOnScale = [0, 1, 3, 5, 7, 8, 10];
-      break;
-    case "Lydian":
-      stepsOnScale = [0, 2, 4, 6, 7, 9, 11];
-      break;
-    case "Mixolydian":
-      stepsOnScale = [0, 2, 4, 5, 7, 9, 10];
-      break;
-    case "Aeolian":
-      stepsOnScale = [0, 2, 3, 5, 7, 8, 10];
-      break;
-    case "Locrian":
-      stepsOnScale = [0, 1, 3, 5, 6, 8, 10];
+    case "Minor":
+       stepsOnScale = [0, 2, 3, 5, 7, 8, 10];
+       break;
     case "major Pentatonic":
       stepsOnScale = [0, 2, 4, 7, 9];
       break;
     case "minor Pentatonic":
       stepsOnScale = [0, 3, 5, 7, 10];
+      break;
     default:
       break;
   }

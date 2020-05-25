@@ -82,8 +82,6 @@ export default function Toolbar() {
       recOn === true
       ? getPitch()
       : document.getElementById("recBtn").innerHTML = '<img src=' + RecBtn +  ' alt="RECORD"></img>'
-
-
     })
   }
 
