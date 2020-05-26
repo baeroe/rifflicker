@@ -5,7 +5,7 @@ You have to select your instrument and the key and scale you want to play and th
 
 Be sure that you have nodejs and npm installed! 
 
-To build and run the app locally download the repository and runt he following commands in the project folder:
+To build and run the app locally download the repository and run the following commands in the project folder:
 
     npm install
     npm run start
