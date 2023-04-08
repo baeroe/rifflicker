@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config=webpack.config.dev.js --open",
+    "start": "webpack-dev-server --config=webpack.config.dev.js --open --openssl-legacy-provider",
     "build-dev": "webpack --config=webpack.config.dev.js",
-    "build": "webpack --config=webpack.config.prod.js"
+    "build": "webpack --config=webpack.config.prod.js --openssl-legacy-provider"
   },
   "keywords": [],
   "author": "",
